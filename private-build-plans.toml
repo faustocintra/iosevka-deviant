@@ -1,0 +1,284 @@
+# docker run -e FONT_VERSION="dev" -it -v $(pwd):/build avivace/iosevka-build ttf::deviant
+
+[buildPlans.deviant]      # <deviant> is your plan name
+family = "Deviant"        # Font menu family name
+spacing = "normal"               # Optional; Values: `normal`, `term`, `fontconfig-mono`, or `fixed`
+serifs = "sans"                  # Optional; Values: `sans` or `slab`
+
+webfont-formats = []
+
+# ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz
+
+###################################################################################################
+# Configure variants
+
+# Optional; Whether to inherit a `ss##` variant
+[buildPlans.deviant.variants]
+inherits = "ss15"
+
+# Optional; Configure single character's variant
+[buildPlans.deviant.variants.design]
+cv01 = 1        # A
+cv02 = 1        # B
+cv03 = 1        # C
+cv04 = 1        # D
+cv05 = 1        # E
+cv06 = 1        # F
+cv07 = 6        # G
+cv08 = 1        # H
+cv09 = 3        # I
+cv10 = 6        # J
+cv11 = 1        # K
+cv12 = 1        # L
+cv13 = 1        # M
+cv14 = 1        # N
+cv15 = 1        # P
+cv16 = 2        # Q
+cv17 = 1        # R
+cv18 = 1        # S
+cv19 = 1        # T
+cv20 = 3        # U
+cv21 = 1        # V
+cv22 = 1        # W
+cv23 = 1        # X
+cv24 = 1        # Y
+cv25 = 1        # Z
+cv26 = 2        # a
+cv27 = 2        # b
+cv28 = 4        # c
+cv29 = 1        # d
+cv30 = 1        # e
+cv31 = 11       # f
+cv32 = 2        # g
+cv33 = 1        # h
+cv34 = 1        # i
+cv35 = 6        # j
+cv36 = 6        # k
+cv37 = 10       # l
+cv38 = 1        # m
+cv39 = 1        # n
+cv40 = 1        # p
+cv41 = 6        # q
+cv42 = 13       # r
+cv43 = 4        # s
+cv44 = 2        # t
+cv45 = 1        # u
+cv46 = 1        # v
+cv47 = 6        # w
+cv48 = 1        # x
+cv49 = 2        # y
+cv50 = 1        # z
+cv52 = 11       # eszet
+cv71 = 13       # 0
+cv72 = 4        # 1
+cv73 = 1        # 2
+cv74 = 1        # 3
+cv75 = 3        # 4
+cv76 = 2        # 5
+cv77 = 3        # 6
+cv78 = 3        # 7
+cv79 = 3        # 8
+cv80 = 3        # 9
+cv81 = 2        # ~
+cv82 = 2        # *
+cv83 = 1        # _
+cv84 = 2        # Paragraph sign
+cv85 = 2        # ^
+cv86 = 2        # ()
+cv87 = 3        # {}
+cv88 = 2        # #
+cv89 = 2        # &
+cv90 = 7        # @
+cv91 = 6        # $
+cv93 = 2        # %
+cv94 = 2        # |
+cv96 = 1        # '
+cv97 = 1        # `
+cv98 = 3        # ?
+cv99 = 2        # square punct.
+VXDD = 2        # square diacritics
+ 
+
+# Optional; Configure single character's variant for Italic only; Overrides [design]
+[buildPlans.deviant.variants.italic]
+cv01 = 2        # A
+cv02 = 7        # B
+cv03 = 1        # C
+cv04 = 2        # D
+cv05 = 1        # E
+cv06 = 1        # F
+cv07 = 6        # G
+cv08 = 1        # H
+cv09 = 3        # I
+cv10 = 10       # J
+cv11 = 2        # K
+cv12 = 1        # L
+cv13 = 3        # M
+cv14 = 1        # N
+cv15 = 2        # P
+cv16 = 9        # Q
+cv17 = 5        # R
+cv18 = 1        # S
+cv19 = 1        # T
+cv20 = 3        # U
+cv21 = 2        # V
+cv22 = 2        # W
+cv23 = 2        # X
+cv24 = 2        # Y
+cv25 = 5        # Z
+cv26 = 9        # a
+cv27 = 2        # b
+cv28 = 1        # c
+cv29 = 4        # d
+cv30 = 2        # e
+cv31 = 15       # f
+cv32 = 8        # g
+cv33 = 2        # h
+cv34 = 12       # i
+cv35 = 8        # j
+cv36 = 4        # k
+cv37 = 12       # l
+cv38 = 4        # m
+cv39 = 2        # n
+cv40 = 2        # p
+cv41 = 6        # q
+cv42 = 3        # r
+cv43 = 1        # s
+cv44 = 3        # t
+cv45 = 4        # u
+cv46 = 6        # v
+cv47 = 7        # w
+cv48 = 7        # x
+cv49 = 6        # y
+cv50 = 25       # z
+cv73 = 2        # 2
+cv74 = 2        # 3
+cv77 = 2        # 6
+cv78 = 5        # 7
+cv80 = 2        # 9
+cv98 = 1        # ?
+cv99 = 1        # round punct.
+VXDD = 1        # round diacritics
+
+
+# End variant section
+###################################################################################################
+
+###################################################################################################
+# Configure ligations
+
+[buildPlans.deviant.ligations]
+inherits = "default-calt"   # Optional; inherits an existing ligation set
+disables = []               # Optional; disable specific ligation groups, overrides inherited ligation set
+enables  = []               # Optional; enable specific ligation groups, overrides inherited ligation set
+
+# End ligation section
+###################################################################################################
+
+
+###################################################################################################
+# Override default building weights
+# When buildPlans.<plan name>.weights is absent, all weights would built and mapped to
+# default values.
+# IMPORTANT : Currently "menu" and "css" property only support numbers between 0 and 1000.
+#             and "shape" properly only supports number between 100 and 900 (inclusive).
+#             If you decide to use custom weights you have to define all the weights you
+#             plan to use otherwise they will not be built.
+[buildPlans.deviant.weights.regular]
+shape = 400  # Weight for glyph shapes.
+menu  = 400  # Weight for the font's names.
+css   = 400  # Weight for webfont CSS.
+
+[buildPlans.deviant.weights.book]
+shape = 450
+menu  = 450  # Use 450 here to name the font's weight "Book"
+css   = 450
+
+[buildPlans.deviant.weights.bold]
+shape = 700
+menu  = 700
+css   = 700
+
+# End weight section
+###################################################################################################
+
+###################################################################################################
+# Override default building slope sets
+# When this section is absent, all slopes would be built.
+
+[buildPlans.deviant.slopes.upright]
+angle = 0             # Angle in degrees. Valid range [0, 15]
+shape = "upright"     # Slope grade used for shape selection.  `upright` | `oblique` | `italic`
+menu  = "upright"     # Slope grade used for naming.           `upright` | `oblique` | `italic`
+css   = "normal"      # Slope grade used for webfont CSS.      `normal`  | `oblique` | `italic`
+
+[buildPlans.deviant.slopes.italic]
+angle = 9.4
+shape = "italic"
+menu  = "italic"
+css   = "italic"
+# End slope section
+###################################################################################################
+
+###################################################################################################
+# Override default building widths
+# When buildPlans.<plan name>.widths is absent, all widths would built and mapped to
+# default values.
+# IMPORTANT : Currently "shape" property only supports numbers between 434 and 664 (inclusive),
+#             while "menu" only supports integers between 1 and 9 (inclusive).
+#             The "shape" parameter specifies the unit width, measured in 1/1000 em. The glyphs'
+#             width are equal to, or a simple multiple of the unit width.
+#             If you decide to use custom widths you have to define all the widths you plan to use,
+#             otherwise they will not be built.
+
+[buildPlans.deviant.widths.normal]
+shape = 535        # Unit Width, measured in 1/1000 em.
+menu  = 5          # Width grade for the font's names.
+css   = "normal"   # "font-stretch' property of webfont CSS.
+
+# End width section
+###################################################################################################
+
+###################################################################################################
+# Character Exclusion
+# Specify character ranges in the section below to exclude certain characters from the font being
+# built. Remove this section when this feature is not needed.
+
+[buildPlans.deviant.exclude-chars]
+ranges = [[10003, 10008]]
+
+# End character exclusion
+###################################################################################################
+
+###################################################################################################
+# Compatibility Ligatures
+# Certain applications like Emacs does not support proper programming liagtures provided by
+# OpenType, but can support ligatures provided by PUA codepoints. Therefore you can edit the
+# following section to build PUA characters that are generated from the OpenType ligatures.
+# Remove this section when compatibility ligatures are not needed.
+
+[[buildPlans.deviant.compatibility-ligatures]]
+unicode = 57600 # 0xE100
+featureTag = 'calt'
+sequence = '<*>'
+
+# End compatibility ligatures section
+###################################################################################################
+
+###################################################################################################
+# Metric overrides
+# Certain metrics like line height (leading) could be overridden in your build plan file.
+# Edit the values to change the metrics. Remove this section when overriding is not needed.
+
+[buildPlans.deviant.metric-override]
+leading = 1150
+winMetricAscenderPad = 0
+winMetricDescenderPad = 0
+powerlineScaleY = 1
+powerlineScaleX = 1
+powerlineShiftY = 0
+powerlineShiftX = 0
+xHeight = 555
+
+# End metric override section
+###################################################################################################
